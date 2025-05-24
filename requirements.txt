@@ -1,0 +1,6 @@
+streamlit
+gTTS
+pydub
+pdfplumber
+numpy
+PyPDF2
