@@ -11,7 +11,8 @@ st.set_page_config(layout="wide")
 st.markdown(custom_css(), unsafe_allow_html=True)
 
 st.markdown(f"<h1 class='title''>{strings.title}</h1>", unsafe_allow_html=True)
-st.markdown(f"<h1 class='subtitle-bold''>Text to Audio</h1>", unsafe_allow_html=True)
+st.header('Text to Audio')
+# st.markdown(f"<h1 class='subtitle-bold''>Text to Audio</h1>", unsafe_allow_html=True)
 
 st.write(""); st.write("")
 
@@ -19,7 +20,8 @@ st.write(""); st.write("")
 col1, col2, col3 = st.columns([1, 1, 2])
 
 with col1:
-    st.markdown(f"<h1 class='subtitle-bold''>Set Parameters</h1>", unsafe_allow_html=True)
+    st.header('Set Parameters')
+    # st.markdown(f"<h1 class='subtitle-bold''>Set Parameters</h1>", unsafe_allow_html=True)
 
     # Speed Selection
     speed = st.selectbox('Speed', options=['Fast', 'Slow'])
@@ -46,7 +48,8 @@ with col1:
 
 # (Column) Upload Section
 with col3:
-    st.markdown(f"<h1 class='subtitle-bold'>Upload</h1>", unsafe_allow_html=True)
+    st.header('Upload')
+    # st.markdown(f"<h1 class='subtitle-bold'>Upload</h1>", unsafe_allow_html=True)
 
     text_input = st.file_uploader('Upload a text or PDF file containing the data to convert', type=['txt', 'pdf'])
 
