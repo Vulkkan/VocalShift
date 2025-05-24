@@ -1,6 +1,6 @@
 streamlit
 gTTS
-pydub
+# pydub
 pdfplumber
 numpy
 PyPDF2

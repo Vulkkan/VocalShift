@@ -46,7 +46,7 @@ with col1:
 
 # (Column) Upload Section
 with col3:
-    st.markdown(f"<h1 class='subtitle-bold''>Upload</h1>", unsafe_allow_html=True)
+    st.markdown(f"<h1 class='subtitle-bold'>Upload</h1>", unsafe_allow_html=True)
 
     text_input = st.file_uploader('Upload a text or PDF file containing the data to convert', type=['txt', 'pdf'])
 
@@ -62,22 +62,22 @@ with col3:
 
         # Generate audio using the backend (t2a.py)
         output_audio_path = tempfile.mktemp(suffix=".mp3")
-        t2a.generate_audio_gtts(extracted_text, output_audio_path, speed=speed == 'Slow', language=language_code, accent=accent_code)
-
-        # Adjust the audio speed
-        adjusted_audio = t2a.adjust_audio_speed(output_audio_path, speed_factor)
-        adjusted_audio_path = tempfile.mktemp(suffix="_adjusted.mp3")
-        adjusted_audio.export(adjusted_audio_path, format="mp3")
+        t2a.generate_audio_gtts(
+            extracted_text,
+            output_audio_path,
+            speed=speed == 'Slow',  # gTTS slow param still usable
+            language=language_code,
+            accent=accent_code
+        )
 
         # Update progress bar for audio generation completion
         progress_bar.progress(80)
 
-        # Display audio file download button and playback interface
+        # Display audio file playback interface and download button
         with open(output_audio_path, "rb") as audio_file:
             audio_bytes = audio_file.read()
             st.audio(audio_bytes, format='audio/mp3')
 
-        # Allow user to download the audio file
         st.download_button(
             label="Download Audio",
             data=audio_bytes,
@@ -90,6 +90,6 @@ with col3:
         progress.empty()
         progress_bar.empty()
 
-        # Clean up the temp files
+        # Clean up the temp file
         os.remove(output_audio_path)
-        os.remove(adjusted_audio_path)
+
