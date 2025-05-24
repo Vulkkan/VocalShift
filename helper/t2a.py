@@ -1,5 +1,5 @@
 import io
-import PyPDF2
+# import PyPDF2
 from gtts import gTTS
 from pydub import AudioSegment
 
@@ -9,13 +9,13 @@ def extract_text_from_file(file_object) -> str:
     if file_object.name.endswith(".txt"):
         # Read text file from the uploaded file
         return file_object.getvalue().decode("utf-8")  # Convert bytes to string
-    elif file_object.name.endswith(".pdf"):
-        # Read PDF file
-        pdf_reader = PyPDF2.PdfReader(file_object)
-        text = ""
-        for page in pdf_reader.pages:
-            text += page.extract_text() or ""
-        return text
+    # elif file_object.name.endswith(".pdf"):
+    #     # Read PDF file
+    #     pdf_reader = PyPDF2.PdfReader(file_object)
+    #     text = ""
+    #     for page in pdf_reader.pages:
+    #         text += page.extract_text() or ""
+    #     return text
     else:
         raise ValueError("Unsupported file format. Use .txt or .pdf")
 

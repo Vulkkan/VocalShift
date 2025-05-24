@@ -48,7 +48,7 @@ with col1:
 with col3:
     st.markdown(f"<h1 class='subtitle-bold''>Upload</h1>", unsafe_allow_html=True)
 
-    text_input = st.file_uploader('Upload a text or PDF file containing the data to convert', type=['txt', 'pdf'])
+    text_input = st.file_uploader('Upload a text file containing the data to convert', type=['txt'])
 
     if text_input is not None:
         progress = st.text("Processing...")
